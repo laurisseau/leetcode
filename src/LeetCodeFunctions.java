@@ -1,4 +1,7 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 
 public class LeetCodeFunctions {
     public int trap(int[] height) {
@@ -99,6 +102,23 @@ public class LeetCodeFunctions {
             }
         }
         return index;
+    }
+
+    public List<List<String>> groupAnagrams(String[] strs) {
+
+        HashMap<String, List<String>> group = new HashMap<>();
+
+        for(String str: strs){
+            char[] charArr = str.toCharArray();
+            Arrays.sort(charArr);
+            String sortedStr = new String(charArr);
+            if(!group.containsKey(sortedStr)){
+                group.put(sortedStr, new ArrayList<>());
+            }
+            group.get(sortedStr).add(str);
+        }
+
+        return new ArrayList<>(group.values());
     }
 
 
